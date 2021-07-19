@@ -19,9 +19,9 @@ p {
   margin-right: 10px;
   overflow-wrap: break-word;
 }
-.displayName{
-  margin-left: 5px;
-  margin-right: 2px;
+.test{
+  margin-left: 10px;
+  font-size: small;
 }
 .message {
   display: flex;

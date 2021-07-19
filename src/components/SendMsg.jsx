@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { Button, Input } from '@material-ui/core';
-import firebase from 'firebase';
 import {store, auth} from "../firebase"
 
 const SendMsg = ({scroll}) => {
@@ -8,13 +7,13 @@ const SendMsg = ({scroll}) => {
 
     async function sendMessage(e){
         e.preventDefault(); //prevents the send button from refreshing the page
-        const {uid, photoURL, displayName}  = auth.currentUser //information about the current user
+        const {uid, photoURL, displayName, createdAt}  = auth.currentUser //information about the current user
         await store.collection("messages").add({
             text: message,
             photoURL,
             displayName,
             uid,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            createdAt
         })
         setMessage('') //empty input
         scroll.current.scrollIntoView({ behavior: "smooth" })
