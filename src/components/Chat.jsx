@@ -18,15 +18,15 @@ const Chat = () => {
             {messages.map(({id, text, photoURL,displayName, uid, createdAt}) =>
                 // unique id for each document 
                 <div>
-                    
-                    <div key = {id} className = {`message ${uid === auth.currentUser.uid ? "sent" : "received"}`}> 
+                    {text ?
+                    (<div key = {id} className = {`message ${uid === auth.currentUser.uid ? "sent" : "received"}`}> 
                     <img src={photoURL} alt=""/>
                     <div className="test">
                         <div>{displayName}</div>
-                        <div>{createdAt.toDate().toLocaleString("en-GB").substring(0,createdAt.toDate().toLocaleString("en-GB").length-3)}</div>
+                        <div>{createdAt ? createdAt.toDate().toLocaleString("en-GB").substring(0,createdAt.toDate().toLocaleString("en-GB").length-3) : null}</div>
                         </div>
                     <p>{text}</p>
-                    </div>
+                    </div>) : null }
                 </div>
             )}
             </div>
